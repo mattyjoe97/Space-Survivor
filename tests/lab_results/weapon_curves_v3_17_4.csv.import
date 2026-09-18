@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://7vjxj0a4xxtr"
+
+[deps]
+
+files=["res://tests/lab_results/weapon_curves_v3_17_4.minute.translation", "res://tests/lab_results/weapon_curves_v3_17_4.scenario.translation", "res://tests/lab_results/weapon_curves_v3_17_4.move.translation", "res://tests/lab_results/weapon_curves_v3_17_4.seconds.translation", "res://tests/lab_results/weapon_curves_v3_17_4.total.translation", "res://tests/lab_results/weapon_curves_v3_17_4.dps.translation", "res://tests/lab_results/weapon_curves_v3_17_4.kills.translation", "res://tests/lab_results/weapon_curves_v3_17_4.kills.translation", "res://tests/lab_results/weapon_curves_v3_17_4.alive.translation", "res://tests/lab_results/weapon_curves_v3_17_4.dmg.translation", "res://tests/lab_results/weapon_curves_v3_17_4.uptime.translation", "res://tests/lab_results/weapon_curves_v3_17_4.boss.translation", "res://tests/lab_results/weapon_curves_v3_17_4.elite.translation"]
+
+source_file="res://tests/lab_results/weapon_curves_v3_17_4.csv"
+dest_files=["res://tests/lab_results/weapon_curves_v3_17_4.minute.translation", "res://tests/lab_results/weapon_curves_v3_17_4.scenario.translation", "res://tests/lab_results/weapon_curves_v3_17_4.move.translation", "res://tests/lab_results/weapon_curves_v3_17_4.seconds.translation", "res://tests/lab_results/weapon_curves_v3_17_4.total.translation", "res://tests/lab_results/weapon_curves_v3_17_4.dps.translation", "res://tests/lab_results/weapon_curves_v3_17_4.kills.translation", "res://tests/lab_results/weapon_curves_v3_17_4.kills.translation", "res://tests/lab_results/weapon_curves_v3_17_4.alive.translation", "res://tests/lab_results/weapon_curves_v3_17_4.dmg.translation", "res://tests/lab_results/weapon_curves_v3_17_4.uptime.translation", "res://tests/lab_results/weapon_curves_v3_17_4.boss.translation", "res://tests/lab_results/weapon_curves_v3_17_4.elite.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -1,0 +1,9 @@
+PHASE 3.5 — Upgrade Scaling, System Clarity & Damage Analytics
+
+- Removed rarity identity from weapons. Weapons are now consistently presented as WEAPON choices.
+- Added per-upgrade rarity values so each stat has its own sensible scaling instead of sharing one 2%-10% curve.
+- Raised several run caps to support longer builds, including Magnet and Area-related progression.
+- Added system compatibility tooltips showing which weapons/systems benefit from each System choice.
+- Added an end-of-run damage breakdown with damage totals and percentage contribution by weapon/source.
+- Slightly eased the mid/late XP curve to help builds reach their more exciting late-game combinations.
+- Kept the Phase 3.4 AoE/Void balance and Graviton scatter behavior intact.

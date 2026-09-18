@@ -1,0 +1,41 @@
+Space Survivors — Patch 3.18 combat polish (dash / forcefield / Void Blades / tooltips)
+=====================================================================================
+FILES  Player.gd (dash charges, impact, ship table, shield sync, continuous contact kept),
+       DashShield.gd (new), DashHUD.gd (new), UI.gd (dash HUD mount, tooltip removal),
+       GameManager.gd (Twin/Phase Thrusters relics, "Ship Ability" damage source),
+       weapons/VoidBlades.gd (control + level steps + L5 shockwave), weapons/fx/VoidWake.gd (new),
+       tests/DashTest.tscn + dash_test.gd (new).
+
+DASH   Charges: dash_charges / dash_charges_max with one independent countdown per spent charge
+       (DASH_COOLDOWN 2.4 s each, no shared cooldown). Impact: 18 x (1 + 3%/level) x ship factor,
+       once per enemy per dash, NOT scaled by weapon stats; tracked as "Ship Ability".
+       Control by class: small 90 px / medium 55 px knockback, elites 12 px + 0.3-0.7 s stagger,
+       bosses never displaced. Ship table (speed / duration / iframe bonus / dmg / knockback /
+       stagger): Viper dmg 1.5x; Voidrunner dash 12% faster, 25% longer; Bulwark +0.18 s
+       i-frames; Destroyer kb 1.4x stagger 0.6; Aegis kb 0.6x + 1 s slow to 50%; Tempest arcs
+       8 dmg to 2 neighbours; Dreadnought kb 1.6x stagger 0.7 (no launch); Nova ignites (burn);
+       Singularity +0.35 freeze. Legacy Viper-only dash damage and Voidrunner auto-phase removed.
+       HUD: compact pips under Ship Status — filled = ready, clockwise arc = recharging,
+       "DASH READY" / "DASH 1.3s", "n/max" when more than one charge.
+RELICS Twin Thrusters (+1 charge), Phase Thrusters (+1 charge, dashed enemies slowed 40% for 1.2 s).
+       Both refresh through the normal relic path; charges reset on run reset.
+SHIELD DashShield.gd: hex-facet energy shell, visible iff dash_iframe_timer > 0 AND invuln_timer > 0,
+       synced at dash start, at the end of every physics step and every render frame. Blocked hits
+       (contact or projectile) during the window trigger a ripple + sparks. The visual never grants
+       or extends invulnerability. The dash continuing after i-frames end shows no shield.
+BLADES L1 orbit + light shove (34/20 px, elites 5 px stagger 0.2 s, bosses none).
+       L2 +10 px orbit coverage. L3 +1.6 rad/s sweep, control 1.3x, stagger 0.28 s.
+       L4 Void Wake: 50% of cuts leave a rift that ticks 40% blade damage after 0.18 s.
+       L5 Void Shockwave every second full sweep: 1.7x orbit radius pulse, 1.7x blade damage,
+       outward shove. Spin is not driven by Fire Rate (no physics spam).
+UI     In-run level-up cards no longer set tooltip_text (menus / Codex / Hangar untouched).
+
+TESTS  tests/DashTest.tscn on all 9 ships: ship_ability damage recorded, small/medium knockback,
+       elite 0-12 px, boss 0.0 px, charge consumed + recharging, Twin+Phase -> 3 charges, two
+       independent timers, no infinite loop, shield visible during the window and gone after.
+       Shield audit: 1 sampled frame per run disagrees — the test node polls before the Player's
+       own _process in that frame; end-of-frame state always matches.
+       Void Blades verified against rushing enemies (Shot harness): L2 101 dmg, L5 403 dmg in
+       6.7 s; the DashTest's stationary blades check is a false negative (the L5 shockwave pushes
+       parked enemies out of reach and they never return — real enemies approach).
+       LifecycleTest A-G passes (no stale shields/dash state across runs). SmokeTest clean.

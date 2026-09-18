@@ -1,0 +1,11 @@
+Phase 3.9 - Context-Aware Systems
+
+- Systems are now offered only when at least one currently equipped weapon can use them.
+- System compatibility is data-driven by weapon ID rather than loose display strings.
+- Level-up system cards show the currently compatible equipped weapons; the full compatibility details are in the tooltip.
+- Tooltips explain the system's weapon-specific behavior without forcing non-projectile weapons into projectile mechanics.
+- Extra Projectile now applies only to compatible discrete-attack weapons: Hunter Missiles, Plasma Lance, Void Blades, Graviton Mines, and Side Batteries.
+- Plasma Lance, Hunter Missiles, Void Blades, Graviton Mines, and Side Batteries now actually receive their extra attacks from Extra Projectile.
+- Area, Aura Size, Projectile Size, Pierce, and Explosion systems use the tighter weapon compatibility model.
+- Radiation Field and Micro Singularity remain area effects and are not treated as projectile weapons.
+- Removed stale compatibility references to removed Drone Swarm/Ion Burst behavior.

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://xpgem_scene"]
+
+[ext_resource type="Script" path="res://scripts/XPGem.gd" id="1_gem"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gem"]
+radius = 8.0
+
+[node name="XPGem" type="Area2D"]
+collision_layer = 8
+collision_mask = 1
+script = ExtResource("1_gem")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.4, 1, 0.6, 1)
+polygon = PackedVector2Array(0, -8, 6, 0, 0, 8, -6, 0)
+
+[node name="Inner" type="Polygon2D" parent="."]
+color = Color(0.8, 1, 0.9, 1)
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(0, -8, 6, 0, 0, 8, -6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gem")

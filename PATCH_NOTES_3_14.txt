@@ -1,0 +1,22 @@
+Space Survivors — Patch 3.14
+============================
+
+Performance
+- Cached enemy list in GameManager (refreshed ~12×/sec) and routed Player / Projectile / Spawner queries through it. Removes dozens of full-group scans per frame during combat.
+- Cached EnemyArt node on enemies (no per-frame get_node_or_null).
+- Damage numbers now hard-cap at 28 concurrent instances (crits/heals still always show). Reduces Label spam under heavy AoE.
+
+Audio
+- New AudioManager autoload with fully procedural SFX (no external assets required).
+- Effects routed to the existing Effects bus so the in-game volume sliders work.
+- Sounds added for:
+  • primary / side gun shots, missiles, plasma lance
+  • hits, crits, explosions
+  • enemy / elite / boss deaths and boss hits
+  • XP, scrap, and heal pickups
+  • dash, player damage, level-up jingle
+- Light rate-limiting so dense combat stays clear instead of white-noise.
+
+Notes
+- Procedural tones are intentionally short and punchy; they scale with the Effects volume slider.
+- Enemy population still hard-capped near 24 for stable frame times.

@@ -1,0 +1,21 @@
+SPACE SURVIVORS — PHASE 3.10
+CRYO FIELD WEAPON SWAP
+
+- Replaced Micro Singularity as a run weapon with Cryo Field.
+- Cryo Field pulses continuously even when no enemies are inside the field.
+- Each pulse deals damage and builds freeze exposure on enemies.
+- Enemies freeze after a cumulative exposure threshold.
+- Base freeze threshold is 2.65 seconds of exposure, scaling down with weapon level to a minimum of 1.45 seconds.
+- Normal enemies freeze for 1.10 seconds.
+- Elite enemies freeze for 0.78 seconds so control remains meaningful without permanently locking elites.
+- Cryo Field radius starts at 155 and scales by +14 per weapon level.
+- Pulse cadence starts near 0.52 seconds and improves to 0.26 seconds at higher levels.
+- Extra Projectile does not apply to Cryo Field.
+- Area and Aura Size systems are compatible with Cryo Field.
+- Added two new superweapon combinations:
+  FROZEN VOID — Cryo Field + Void Blades.
+  NUCLEAR WINTER — Radiation Field + Cryo Field.
+- Frozen Void increases Cryo Field impact and improves elite control while Void Blades shred frozen targets.
+- Nuclear Winter adds an additional radiation burn to Cryo Field pulses.
+- Removed stale Micro Singularity upgrade/evolution references from the active weapon pool.
+- Retained the Singularity ship frame as a separate ship identity; only the run weapon was replaced.

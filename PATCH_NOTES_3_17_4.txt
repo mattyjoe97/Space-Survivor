@@ -1,0 +1,32 @@
+Space Survivors — Patch 3.17.4 pre-Enemy-2.0 pass
+=================================================
+1. BOSS THREAT / CONTACT — ROOT CAUSE of "standing on the boss is free": player contact damage
+   fired only on hurtbox ENTRY, and a touch that landed during i-frames was dropped entirely.
+   An enemy that stayed overlapping never hit again. Contact is now continuous: whenever the
+   0.35 s i-frame window ends with an enemy still overlapping, the strongest one hits again
+   (boss contact x1.6). Boss also gained a close-range punish: hugging within 170 px starts a
+   0.55 s telegraph (contracting ring + alarm) then a 190 px hull shockwave for 30-42 damage
+   with knockback, every ~2 s; attack cooldowns 20% faster, floor 0.6 s.
+   3-second harness (level-18 build, phase 1): stationary on the boss 68-107, moving 30,
+   dodging 38. The harness ship spawns with its start shield, so real stationary numbers are
+   higher (38 per 0.35 s of overlap plus shockwaves).
+2. GRAVITON MINES — moving-enemy arena, 25 s, L5 alone: Mines 7.1k, Railgun 7.5k, Phase
+   Disruptor 9.2k, Torpedo 2.1k, Blades 0.5k. Mines are top-tier crowd control but not an
+   outlier against other L5 weapons; no change. (Their carry in your run = they were the only
+   AoE in a build the harness rates similarly.)
+3. DIMENSIONAL REAPER — supers, same arena: Reaper 30.4k, Storm Grid 28.4k, Dreadnought Salvo
+   25.8k; parents Blades 0.5k + Phase 9.2k. The jump was rift stacking: a rift on EVERY cut,
+   each pulsing 3x, with pull. Now one rift per enemy per 1.2 s, rift 0.40x, phased +25%.
+   Global super premium 1.45x -> 1.30x. Transformation and visuals untouched.
+   Void Blades buffed (0.5+0.09/lv) — they were far below every other weapon.
+   Phase Disruptor rift 0.5x -> 0.4x.
+4. EARLY CURVE — the contact fix above is the big one (swarms pressing on the hull now keep
+   hitting). Also spitters 20% -> 24% of spawns, snipers 6% -> 9% after 90 s.
+5. LEVEL-UP UI — synergy line moved to the full card width (92..675), word-wrap on, no clip;
+   "SYNERGY READY..." shortened to "SUPERWEAPON READY AT MAX • <weapon> 5/5".
+6. TIMER — counts up 00:00 -> 10:00; last minute appends "▸ TITAN 10:00"; boss phase reads
+   "10:00 • TITAN". Presentation only; run length and boss timing unchanged.
+7. READABILITY — enemy projectile kinds, damage numbers, pull safety (56 px ring) and visual
+   recoil are unchanged from 3.17.2/3.17.3 and re-verified by the smoke test.
+Remaining outliers to watch: Torpedo Bay under-reads against rushing enemies (2.1k) but was
+strong in your real runs; Phase Disruptor solo (9.2k) is high for a CONTROL weapon.

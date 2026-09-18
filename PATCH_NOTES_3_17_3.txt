@@ -1,0 +1,34 @@
+Space Survivors — Patch 3.17.3 combat curve
+===========================================
+1. PRIMARY CANNONS — intentional (every hull has a base gun; ship identity is the
+   projectile count 1-3 plus the signature weapon) but they were an unintended build
+   core: full `damage` per shot at a 0.32 s cycle (~39 DPS per barrel from second one,
+   more than any L1 weapon) and every system rode on them (explosive, burn, cryo, homing).
+   Now 55% damage, smaller bolts, and no explosive/burn/cryo riders. Homing still works.
+2. EARLY POWER SPIKE — the cannons above, plus the fixed enemy population cap of 24
+   (spawn throttled from 18 alive). Once a build cleared 24 enemies faster than they
+   spawned there was nothing left to threaten the ship, from about minute 3.
+3. PRESSURE — population cap now grows 24 -> ~80 by 10:00 (+1 per 10.5 s), spawn interval
+   floor 0.46 -> 0.30 s, 4 per spawn after 6:00, and a standard-mode elite every 75 s
+   from 4:00. No enemy damage values were raised.
+4. BOSS — flat 5200 HP, no burst limit, every weapon bonus applied. Now: HP x(1 + 0.10 per
+   player level) (level 18 -> ~14.5k), no single hit removes more than 2.5% of hull, and
+   each phase transition raises a 2.6 s shield with a 14-orb radial burst the player must
+   weave through. Representative late build (4 L5 weapons incl. Dreadnought Salvo, 6
+   damage, 5 fire rate): ~65-75 s to kill instead of 5-10 s.
+5. OUTLIERS — controlled L5 tests from 3.17.2 stand (Railgun 1392, Scattergun 1357,
+   Mines 1673, Missiles 1688, Torpedo 1384, Lance 1512, supers 1477-2469). The 48.5%
+   cannon share is gone with (1).
+6. HORN SOUNDS — three tonal low-frequency sources remained: big_boom (42 Hz sine tail,
+   every torpedo / singularity detonation — the one you kept hearing with Torpedo Bay),
+   phase (900 -> 0 Hz descending sweep, Phase Disruptor / elite magnet drop) and boss_roar
+   (48+73 Hz sines). All rebuilt noise-based: impact crack + short sub punch, digital
+   chirp, mechanical roar.
+
+MEASURED CURVE (sim, balanced pilot, 3 seeds)
+  1:00  lvl 2-3   DPS 16   enemy HP 59   TTK 3.7 s   ~18 alive   hull 0.97-1.00
+  3:00  lvl 7-8   DPS ~100 enemy HP 144  TTK 1.5 s   ~34 alive   hull 0.80-0.91
+  5:00  lvl 13    DPS 292  enemy HP 233  TTK 0.8 s   ~46 alive   hull 0.83
+  7:00  lvl 17    DPS 331  enemy HP 324  TTK 1.0 s   ~58 alive   hull 0.77
+  Two of three pilots died between 2:30 and 3:30 (they park in swarms); alive enemy
+  count now climbs all run instead of flat-lining at 24.

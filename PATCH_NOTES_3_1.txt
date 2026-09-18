@@ -1,0 +1,42 @@
+SPACE SURVIVORS — PHASE 3.1
+Damage Numbers • Rarity • Upgrade Balance
+
+UPGRADE RARITY
+- Five tiers: Common, Uncommon, Rare, Epic, Legendary.
+- Base roll odds at 0 Luck: 62% / 24% / 10% / 3% / 1%.
+- Luck shifts probability toward higher tiers.
+- Tier values for percentage-based upgrades: +2% / +4% / +6% / +8% / +10%.
+- Rare milestone rolls are guaranteed Rare or better.
+
+RUN CAPS
+- Damage: +60% from capped percentage upgrades.
+- Move Speed: +40%.
+- Fire Rate: +35% faster.
+- Projectile Speed: +50%.
+- Max Hull: +50%.
+- Magnet Range: +60%.
+- XP Gain: +40%.
+- Luck from run upgrades: +30.
+- Crit Chance from run upgrades: +20 percentage points.
+- Projectile Size: +40%.
+- Aura / Blast Radius: +50%.
+- Explosion Damage: +50%.
+- Scrap gain: +75%.
+
+MERCHANT TUNING
+- Weapon Calibration: +6% damage, 125 Scrap, shared +60% run cap.
+- Reactor Overclock: +5% fire rate, 150 Scrap, shared +35% cap.
+- Flux Capacitor: +8% projectile speed, 105 Scrap, shared +50% cap.
+- Targeting Suite: +3% crit chance, 175 Scrap, shared +20 point cap.
+- Salvage Contract: +15% Scrap gain, 185 Scrap, shared +75% cap.
+- Capped Merchant offers become disabled instead of wasting Scrap.
+
+DAMAGE NUMBERS
+- Critical hits are larger and pulse subtly before fading.
+- Existing damage-number visibility setting remains respected.
+
+UI
+- Upgrade cards now show their exact rarity and rolled value.
+- Upgrade tooltips explain that Luck influences rarity odds.
+- Run caps are shown directly on percentage-based upgrade descriptions.
+- Luck is visible in the gameplay HUD.

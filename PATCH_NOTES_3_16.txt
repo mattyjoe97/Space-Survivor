@@ -1,0 +1,87 @@
+Space Survivors — Patch 3.16 "Fourteen Weapons, Seven Superweapons"
+====================================================================
+
+The weapon system has been rebuilt from scratch on top of 3.15. Ships, passives,
+enemies, sectors, economy, saves, menus, aim modes and the audio framework are
+untouched. Solar Flare and the eight old stat-bonus "synergies" are gone.
+
+ARCHITECTURE
+- scripts/weapons/WeaponBase.gd   shared helpers: aim (manual/auto), line & radius
+                                   queries, crit + status-aware hit(), damage attribution
+- scripts/weapons/WeaponManager.gd one module per weapon under Player/Weapons;
+                                   activates superweapons and suppresses their parents
+- scripts/weapons/StatusHost.gd    burn / irradiated / phased / chilled effects that
+                                   attach to ANY enemy (elites and boss included)
+                                   and draw their own overlays
+- scripts/weapons/WeaponFX.gd      lightning bolts, slewing beams, pulse rings
+- scripts/weapons/fx/*.gd          per-weapon world objects (mines, torpedoes, coils,
+                                   flame cone, phase wave, rifts, black hole...)
+- Projectile.gd gained split-on-hit, ricochet, knockback and on_hit callbacks.
+- Level-up cards now show what the NEXT level actually changes for each weapon.
+
+THE 14 WEAPONS (role · behaviour · L5)
+ 1 Hunter Missiles   ORDNANCE  volleys swing wide then curve in; L3 warheads;
+                               L5 split into two micro-seekers on impact
+ 2 Plasma Lance      ENERGY    sustained beam that sweeps onto the target and burns;
+                               L5 refracts off the first enemy into a second beam
+ 3 Arc Coil          ENERGY    jagged chain lightning, micro-stun per jump;
+                               L5 leaves an overcharge node that re-arcs
+ 4 Void Blades       VOID      always-on orbiting crescent blades;
+                               L5 periodic outward lash to double range
+ 5 Railgun           KINETIC   visible charge-up, then a screen-crossing rail with
+                               knockback; L5 fires perpendicular cross-rails
+ 6 Graviton Mines    ORDNANCE  drift -> arm (blink) -> drag -> detonate;
+                               L5 collapse into a singularity first
+ 7 Radiation Field   AURA      toxic field; irradiated enemies keep ticking after they
+                               leave; L5 fallout cloud on death
+ 8 Cryo Field        CONTROL   frost pulses slow and build freeze; frozen enemies take
+                               +25%; L5 shatter on death chills neighbours
+ 9 Side Batteries    KINETIC   visible flank turrets fire alternating broadside bursts
+                               perpendicular to heading; L5 quad batteries (4 sides)
+10 Tesla Coil        ENERGY    drops a stationary coil turret with uptime bar that zaps
+                               everything in range; L4 two coils; L5 coils link a wall
+11 Plasma Flamethrower ENERGY  continuous animated flame cone, stacking burn;
+                               L5 leaves burning pools
+12 Torpedo Bay       ORDNANCE  slow heavy torpedoes accelerate into a huge knockback
+                               blast; L5 burst into 3 cluster bomblets
+13 Photon Scattergun KINETIC   close-range pellet spray that ricochets into new targets;
+                               L5 double ricochet + double-tap
+14 Phase Disruptor   VOID      crescent wave passes through enemies and marks them to
+                               take +15..30% damage from everything; L3 shove;
+                               L5 marks collapse into pulsing rifts
+
+THE 7 SUPERWEAPONS (both parents at level 5)
+ Hunter Missiles + Torpedo Bay      DREADNOUGHT SALVO   rolling 8-torpedo homing salvo,
+                                                        launcher racks open on the hull
+ Plasma Lance + Flamethrower        HELLFIRE LANCE      wide flaming beam sweeping a full
+                                                        circle, leaving fire pools
+ Arc Coil + Tesla Coil              STORM GRID          four orbiting tesla nodes linked by
+                                                        live lightning walls
+ Void Blades + Phase Disruptor      DIMENSIONAL REAPER  two huge phase scythes; every cut
+                                                        opens a rift that drags neighbours
+ Railgun + Photon Scattergun        STARBREAKER         1s charge, colossal rail that sprays
+                                                        photon shrapnel sideways
+ Graviton Mines + Cryo Field        FROZEN SINGULARITY  persistent black hole ahead of the
+                                                        ship; freezes, drags, collapses
+ Radiation Field + Side Batteries   NUCLEAR BROADSIDE   quad fission shells leave fallout
+                                                        zones; aura blooms to reactor size
+On activation: full-screen ring/ray burst, "SUPERWEAPON ONLINE" banner with the
+weapon's description, unique rising fanfare, and the two parent chips in the HUD
+are replaced by a single gold-bordered superweapon chip with a fused icon.
+
+ICONS / AUDIO
+- New vector icons for Tesla Coil, Plasma Flamethrower, Torpedo Bay, Photon
+  Scattergun, Phase Disruptor, and fused "super" icons for all seven.
+- New SFX: torpedo, scatter, flame, phase, tesla, big_boom, superweapon.
+
+FIXES
+- VFX.shockwave scaled its Line2D, which multiplied the stroke width into a giant
+  disc on every explosion. Rewritten to regenerate points; explosions are now rings.
+- Enemy chill/slow now goes through a proper chill_timer on Enemy.
+
+TESTING
+- tests/SmokeTest.tscn: all 14 weapons at L5 + all 7 superweapons, elites, boss,
+  level-up, merchant, death. Passes on Viper, Bulwark, Aegis.
+- tests/Shot.tscn: screenshot harness (Xvfb/Mesa) used to visually verify every
+  weapon and superweapon. Env: SHOT_WEAPONS="id:lvl,..." SHOT_FRAMES="a-b:step"
+  SHOT_SUPER=1 SHOT_LEVELUP=1 SHOT_RING=0 SHOT_SHIP=viper

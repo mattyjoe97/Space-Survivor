@@ -1,0 +1,43 @@
+Space Survivors — Patch 3.17.2 QA / balance pass
+================================================
+1. ENEMY PROJECTILE READABILITY — EnemyBullet rewritten with per-kind silhouettes, a dark
+   outline halo for contrast on nebulae, bright white cores, history trails, and a yellow
+   proximity ring that brightens/flashes in the last ~140 px before the ship.
+   dart (default, hot pink) / needle (sniper: long cyan-white, 340 px/s) /
+   blob (Void Spitter + elite: fat magenta, leaves a 2.4 s acid puddle) /
+   orb (boss: violet halo, pulsing core). Verified in an 18-ranged + 30-melee + elite scene.
+2. ENERGY SIPHON — was a flat +2 HP per kill, unlimited: at late kill rates (~3/s) that is
+   ~6 HP/s, more than contact damage with i-frames, hence AFK. Now: 1% max hull per kill,
+   budgeted to 3% max hull per second, and silenced for 0.8 s after any hit. Still the best
+   sustain relic while you are killing and dodging; useless while you stand in damage.
+3/4. DAMAGE OUTLIERS — controlled test (same ship, each weapon alone at L5, 25 s vs a parked
+   600-HP ring), totals before -> after:
+     Railgun          411 -> 1392   (+ armor-piercing 1.6x vs elites/boss, 20% inherent crit,
+                                     wider rail, prefers the toughest target, cycle 1.7 s)
+     Photon Scattergun 1557 -> 1357 (pellet 0.34+0.05/lv, ricochets lose 30% per bounce)
+     Graviton Mines   6262 -> 1673   ROOT CAUSE: a clump dragged into 4 mines took 4 stacked
+                                     blasts. Overlap protection: one mine blast per enemy per
+                                     450 ms; pull radius 100+10/lv. Still the top crowd weapon.
+     Hunter Missiles  1688 (ref)   Torpedo Bay 1384   Plasma Lance 1512
+     Starbreaker      1106 -> 1477  (x1.45 super premium, rail dmg 4.5, width 22, 6 shrapnel/side)
+     Dreadnought Salvo 369 -> 2097  ROOT CAUSE: torpedoes launched at +-0.9-1.4 rad swing with
+                                     the steering meta never applied; most flew off. Swing
+                                     +-0.35-0.65, turn 3.6, blast 115, damage 3.2, plus a
+                                     3-missile stream every second between salvos.
+     Nuclear Broadside 2469 (with premium; unchanged otherwise)
+   All superweapons now carry a 1.45x damage premium (they replace two maxed weapons and
+   were landing below a single one).
+5. "HONKING" SOUND — traced to AudioManager._make_elite_spawn(): a 220->100 Hz descending
+   sine sweep with noise, played by EnemySpawner._spawn_elite() every time an elite spawns
+   (intentional alert, wrong timbre). Replaced with a two-tone 880/660 Hz klaxon with a
+   noise tick. The torpedo launch (rising 90->250 Hz sine + 55 Hz) was the other horn-like
+   source; now a pneumatic noise burst + thump.
+6. MOVEMENT PRESSURE — snipers only ever spawned in "gravity" sectors; now also 6% of spawns
+   everywhere after 90 s (14% in gravity sectors). Spitter blobs leave acid puddles, so a
+   stationary ship is punished by the enemy that already targets it. Combined with the
+   siphon change and readable projectiles, standing still is no longer free; enemy damage
+   values were not raised.
+
+TESTS: controlled DPS harness (tests/Shot.tscn headless, SHOT_FRAMES=1500), ranged-density
+render, SmokeTest. Remaining outlier to watch in real runs: Nuclear Broadside sits ~1.5x
+above the other supers because the aura counts as free damage on everything nearby.

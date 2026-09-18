@@ -1,0 +1,77 @@
+Space Survivors — Patch 3.15 "Polish & Presentation"
+=====================================================
+
+ICONS (new)
+- scripts/GameIcons.gd: procedural vector icon library. Distinct icons for
+  every weapon (10), every ship (9), every enemy incl. elites / commander /
+  boss (12), and ~20 misc glyphs (XP, scrap, heal, luck, reroll, merchant,
+  relic, cursed, synergy, systems, stat upgrades...). Crisp at any size.
+- scripts/IconView.gd: drop-in Control badge -> IconView.make(kind, id, color, px)
+- Icons now appear on: HUD weapon chips (with level pips), level-up cards,
+  hangar ship cards, the HUD ship badge, and the Codex (enemies + synergies).
+
+SHIPS
+- Every ship has its own in-game hull (previously all shared one hull with
+  different colors). Hulls match the hangar preview silhouettes.
+- Animated engine flames scale with throttle; ship banks/skews into turns;
+  blinking running lights; canopy specular sweep.
+- Damage state: sparks + smoke wisps below 45% hull.
+- Shield shimmer ring while invulnerable (dash / post-hit).
+- Engine particle trail (CPUParticles2D) and dash afterimage ghosts.
+
+ENEMIES
+- Per-variant redesigns: snapping mandibles, rotating armor plates (Armored),
+  charge lights that fill as the shot readies (Sniper), glowing plasma maw
+  during telegraph (Void Spitter), phasing core (Teleporter), split seam
+  (Splitter), pulsing tendrils (Leecher).
+- Eye/sensor tracks the player.
+- Hit flash + squash-and-stretch on damage (the old flash targeted a hidden
+  polygon and never showed). Elites and the Void Titan also flash on hit.
+- Freeze build-up shows ice crystals; full freeze tints the body.
+
+VFX / PARTICLES
+- New helpers in VFX.gd: sparks(), smoke(), shockwave(), debris(),
+  muzzle_flash(), enemy_death(), ship_ghost(), mega_explosion(), postfx_punch().
+- Hits spawn spark streaks; crits add directional sparks.
+- Explosions now layer shockwave + sparks + smoke.
+- Enemy deaths: flash + shockwave + sparks + tumbling shards (+ smoke for heavies).
+- Elite and boss deaths use a cinematic multi-stage mega explosion.
+- Muzzle flashes on primary / side guns / missiles; missile exhaust particles.
+- Projectiles restyled: energy bolts vs. finned missiles, curved history trails.
+- Level-up, dash, Solar Flare, elite spawn and player death all got bigger.
+- Screen shake fixed (camera lookup was failing silently) and now decays
+  over several steps.
+
+POST-PROCESSING & BACKGROUND
+- shaders/postfx.gdshader + scripts/PostFX.gd: vignette, chromatic
+  aberration punch on hits / railgun / boss events, low-hull red edge pulse,
+  faint film grain. HUD stays crisp (UI layer moved above PostFX).
+- shaders/nebula.gdshader + scripts/NebulaBackdrop.gd: procedural fbm nebula
+  with twinkling stars, parallaxes with the camera, palette shifts per sector.
+- New Settings toggle: "Screen Effects (vignette / distortion)" (saved).
+
+AUDIO
+- 15 new procedural SFX: arc zap, railgun, solar flare, void blades, mines,
+  freeze, merchant, boss roar, low-hull warning, synergy, evolution,
+  UI hover, UI confirm, shield/vacuum, elite spawn. All wired in.
+- New MusicManager autoload: procedural looping music synthesized once in a
+  background thread (~2s), three phase-locked stems (pad / drive / tension)
+  crossfaded between moods: menu, calm (run start), combat (after 18s),
+  boss. Music ducks under the level-up / merchant / pause panels.
+  Uses the existing Music volume slider.
+
+UI ANIMATION
+- Level-up cards stagger-slide in, panel pops, cards scale on hover with
+  glowing icon; HUD weapon chips pop in when acquired.
+- All themed buttons (menu, hangar, merchant) get hover/press sounds and a
+  small scale pop.
+- HUD weapon panel only rebuilds when the loadout changes (was every frame).
+
+FIXES
+- Enemy death spawns (gems, scrap, splitter children, pickups) are now
+  deferred, removing "Can't change this state while flushing queries" errors.
+
+TESTING
+- tests/SmokeTest.tscn: headless run that spawns every enemy, gives every
+  weapon, kills elites and the boss, opens level-up + merchant, and kills
+  the player. Run: godot --headless --path . res://tests/SmokeTest.tscn

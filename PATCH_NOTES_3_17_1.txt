@@ -1,0 +1,42 @@
+Space Survivors — Patch 3.17.1 QA pass
+======================================
+1. "Invisible object taking damage"  — ROOT CAUSE
+   DamageNumber._process wrote `position = Vector2(side_drift, drift)` every frame,
+   discarding the spawn position set by spawn(). Every number drifted to the world
+   origin (0,0) on its first frame; the dark ring in the screenshot is just the
+   background decoration near the origin. Fixed: numbers keep `base_pos` and are
+   top_level; drift is added to it.
+2. Missing normal damage numbers — ROOT CAUSE
+   A static `_active_count` only decremented when a number expired naturally. Numbers
+   purged at run end never decremented it, so after the first run the pool read as
+   full forever and spawn() dropped every non-crit / non-heal number. Fixed: the pool
+   is counted from the "damage_numbers" group. Also new: rapid hits on the same spot
+   (beam ticks, DoT, high fire rate) merge into one rising number ("20 ×3"); when the
+   pool (40) is full the value folds into the oldest number instead of being lost.
+   Crits stay gold, larger, pulsing, never merged. Show Damage Numbers still gates it.
+3. Middle mouse toggles AUTO TARGET <-> MANUAL AIM (saved), with a toast and a small
+   HUD line under Ship Status ("◉ AUTO TARGET [MMB]" / "◎ MANUAL AIM [MMB]").
+4. Pickup drops: chance per kill 4% -> 2.5%; heal share 55% -> 70%.
+   Heal 2.2% -> 1.75% per kill (-20%), Magnet 1.8% -> 0.75% (-58%). Effects unchanged.
+   Elites still always drop an elite magnet. XP/Scrap untouched.
+5. PullSafety (scripts/weapons/PullSafety.gd) shared by Graviton Mines, Frozen
+   Singularity and Phase/Reaper rifts: enemies pulled toward the effect are deflected
+   onto a 56 px ring around the ship and slide tangentially instead of crossing it;
+   elites/boss are pulled at 35% strength. Frozen Singularity now hunts 210 px ahead.
+6. Codex: locked synergies show "██████████ / ???" with the required weapons named
+   (display names, not ids). Legacy evolution tooltips also use display names.
+7. Firing jitter — ROOT CAUSE: Railgun, Scattergun and Starbreaker moved
+   player.global_position for recoil. Replaced with Player.visual_recoil(): only the
+   ShipArt node kicks back and eases home; the body never moves.
+8. ArenaBounds: faint animated dashed frame at ±2500 with corner brackets that
+   brighten as the ship approaches an edge.
+
+TESTS RUN
+- Damage-number audit (tests/Shot.tscn): missiles (projectile), Plasma Lance (beam),
+  Torpedo Bay (AoE), Railgun with 100% crit, Hellfire Lance superweapon + burn DoT,
+  and Show Damage Numbers OFF. Normal numbers present for every source, none more
+  than 80 px from an enemy (none at the origin), crits distinct, zero numbers with the
+  setting off. Screenshots inspected.
+- Pull safety: mine on the ship pulling a 12-enemy ring -> closest approach 56.0 px,
+  held there for 3 s. Frozen Singularity: enemies collect at the hole, 214 px away.
+- SmokeTest and LifecycleTest (A-G) pass.

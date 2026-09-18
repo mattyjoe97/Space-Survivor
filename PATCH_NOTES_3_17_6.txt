@@ -1,0 +1,18 @@
+Space Survivors — Patch 3.17.6 primary cannons removed
+======================================================
+FINDING  Primary Cannons were legacy from before the signature-weapon system. Player._apply_character
+         already set projectile_count = 0, so no ship fired them at run start. The only thing that
+         raised it was the Multi-Cannon (extra_projectile) system, which still carried a legacy
+         `projectile_count += 1`: taking Multi-Cannon once switched on a hidden base gun (0.55x
+         damage, 0.32 s cycle, scaled by every core stat, costing no slot). That is the 44-48%
+         "Primary Cannons" share seen in real runs, and it only appeared in runs that picked
+         Multi-Cannon.
+CHANGE   Removed: the base-gun fire loop no longer runs and Multi-Cannon no longer touches
+         projectile_count (it still adds +1 to every compatible weapon as its card says). The
+         projectile_count field is kept at 0 for the hull-hardware art. Damage-source name kept
+         as "Primary Cannons (legacy)" so old run summaries still read.
+VERIFIED Fresh Voidrunner, 40 s of combat: void_blades 100% of damage, nothing else.
+         Voidrunner + Phase Disruptor L1 + Multi-Cannon x2 (the reported build): void_blades 81%,
+         phase_disruptor 19%, primary cannons 0%.
+NOTE     Void Blades intentionally not rebalanced in this patch. The WeaponLab always measured
+         weapons with cannons disabled, so its 3.17.5 curves already describe the no-cannon game.

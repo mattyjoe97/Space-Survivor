@@ -1,0 +1,25 @@
+Space Survivors — Patch 3.19.1 pre-Enemy-2.0 stability
+======================================================
+FILES  UI.gd, GameManager.gd, Enemy.gd, EliteRammer.gd, EliteSpitter.gd, Boss.gd,
+       tests/Patch3191Test.tscn (new).
+
+1 OVERCHARGE — REAL FLOW  The level-up handler in UI.gd short-circuited an exhausted build into
+  heal(20) + 15 scrap + 100 score and never opened the panel. That branch is removed; the panel
+  opens as always and build_levelup_choices() supplies the 3 OVERCHARGE cards. Nothing about the
+  Overcharge pool, caps or reset changed.
+2 ATOMIC ATTRIBUTION  record_damage(src) still announces the source, but every take_damage()
+  (Enemy, EliteRammer, EliteSpitter, Boss) now CONSUMES it on entry — before the dead-target,
+  shield and zero-damage exits — and passes it explicitly to commit_damage(effective, src).
+  A blocked, absorbed, dead-target or zero hit therefore clears the source; an unannounced hit is
+  charted as "other", never as a stale earlier source.
+TESTS  Patch3191Test (real player-facing path): railgun into a shielded boss commits nothing and
+  leaves no pending source; the next hit from another source is attributed only to that source;
+  overkill excluded (25 of 1000), dead target excluded, zero-damage hit leaves nothing, unannounced
+  hit -> other, crit via WeaponBase.hit, DoT ticks, relic (orbit_drones), superweapon all correct.
+  Overcharge: exhausted build -> real add_xp level-up -> panel opens with 3 OVERCHARGE cards, no
+  scrap fallback, card pressed -> bonus applied and run resumes, second level-up offers Overcharge
+  again, GameManager.reset() clears it. DashTest still records ship_ability through the new path.
+  SmokeTest and LifecycleTest A-G pass.
+CAVEAT  One synthetic check in Patch3191Test ("dash -> ship_ability", which calls _dash_impact()
+  directly from the test with a hand-positioned ship) reads no damage; the real dash path is
+  verified by DashTest on all ships. Left as a known test-harness artifact.

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://enemy_scene"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://scripts/EnemyArt.gd" id="2_enemy_art"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
+radius = 14.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_enemy")
+
+[node name="EnemyArt" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("2_enemy_art")
+
+[node name="EnemyPolygon" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0.28, 0.38, 1)
+polygon = PackedVector2Array(0, -18, 8, -6, 16, 4, 8, 12, 0, 8, -8, 12, -16, 4, -8, -6)
+
+[node name="Armor" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.7, 0.15, 0.25, 1)
+polygon = PackedVector2Array(-6, -4, 6, -4, 4, 6, -4, 6)
+
+[node name="Eye" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0.95, 0.3, 1)
+polygon = PackedVector2Array(-3, -8, 3, -8, 2, -2, -2, -2)
+
+[node name="SpikeL" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.9, 0.2, 0.35, 1)
+polygon = PackedVector2Array(-14, 0, -24, -6, -18, 6)
+
+[node name="SpikeR" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.9, 0.2, 0.35, 1)
+polygon = PackedVector2Array(14, 0, 24, -6, 18, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_enemy")

@@ -1,0 +1,11 @@
+Space Survivors — Patch 3.14.2
+==============================
+
+Death sequence
+- After the ship breaks apart, there is a ~1.15s delay before the game-over panel appears.
+- Enemies and spawning stop immediately (is_game_over), but the tree stays unpaused so you can watch the debris, rings, and sparks finish.
+- Ship-breakup VFX uses PROCESS_MODE_ALWAYS so the last frames still play if the tree pauses.
+
+Files
+- scripts/Player.gd — delayed player_died emit
+- scripts/VFX.gd — process_mode on ship_breakup root

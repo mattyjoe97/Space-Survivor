@@ -1,0 +1,2 @@
+Phase 3.11.3 Hangar Text Layout Fix
+Moved ship fleet list lower, reserved dedicated preview/info/footer regions, tightened ship-info typography, and moved Launch below info.

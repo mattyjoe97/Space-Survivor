@@ -1,0 +1,17 @@
+SPACE SURVIVORS — PHASE 3.2: BUILD DIVERSITY
+
+- Added 6 new weapons: Void Blades, Ion Burst, Railgun, Drone Swarm, Graviton Mines, Solar Flare.
+- Total weapon pool is now 9.
+- Added separate level-up categories: WEAPONS, SYSTEMS, UPGRADES, MODIFIERS.
+- Weapon slots are separate from core upgrade slots: 4 base slots, expandable to 6 through SCRAP LAB ARSENAL EXPANSION.
+- Weapon levels cap at 5. Core stat upgrades now cap at 10. System upgrades cap at 5.
+- Added 8 designed weapon synergies that activate when their two required weapons both reach level 5.
+- Synergies trigger a special screen-space/gameplay feedback burst, modify weapon behavior, and persist in the Synergy Codex after discovery.
+- Level-up cards now have clearer descriptions, actual effect text, rarity, progress, hover tooltips, and a left-side hover arrow.
+- Removed cap percentages from level-up effect text; progress is shown as current/max.
+- Luck guidance is reduced to a small hint instead of dominating each upgrade card.
+- Main HUD now lists active weapon levels and current weapon-slot capacity.
+- Scrap Lab now includes ARSENAL EXPANSION for the 5th and 6th weapon slots.
+- Existing Phase 3.1 damage/rarity tuning is retained.
+
+Note: No Godot runtime executable is available in this environment, so this build is package/static verified rather than runtime tested.

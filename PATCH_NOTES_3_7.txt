@@ -1,0 +1,14 @@
+PHASE 3.7 — WEAPON IDENTITY, STAT SCALE & TRUE SUPERWEAPONS
+
+- Removed Drone Swarm and Ion Burst from the weapon roster; they no longer appear as weapon choices.
+- Radiation Field, Micro Singularity and Side Batteries remain full weapons.
+- Upgrade rarity values now start stronger: Damage 5%, Speed 5%, Fire Rate 5%, Magnet 15%, Crit 4%, Aura 15%, with stat-specific scaling through Legendary.
+- Removed artificial per-run additive stat caps. Individual upgrade level limits remain.
+- Reworked weapon synergies into true mechanical superweapons instead of flat stat boosts:
+  Hunter-Killer Protocol, Overload Protocol, GRAVITY STORM, EVENT HORIZON, CORONA BURST, VOID PLAGUE, BROADSIDE BARRAGE, DEAD STAR.
+- Superweapons now change behavior and add new VFX/gameplay effects when both required weapons reach level 5.
+
+- Area is now a true rarity-scaled stat and also expands the reach of area weapons.
+- Scrap Gain is now an actual level-up stat with its own rarity curve and no artificial per-run cap.
+- Old generic stat-evolution triggers are retired; the Codex EVOLUTIONS page now tracks weapon superweapons.
+- Activated weapon synergies now populate both Active Evolutions and Active Synergies.

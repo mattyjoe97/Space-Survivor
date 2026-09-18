@@ -1,0 +1,31 @@
+Space Survivors — Patch 3.17.5 weapon + ship balance pass (WeaponLab-driven)
+==========================================================================
+Before/after tables: tests/lab_results/weapon_curves_v3_17_4.md -> weapon_curves_v3_17_5.md
+(index = weapon DPS / 14-weapon average at that minute; each weapon alone, matched investment)
+
+HUNTER MISSILES   early idx 2.1 -> ~1.3. Volley 2/2/3/3/4 (was 2/3/3/4/4), damage 0.62+0.09/lv
+                  (was 0.85+0.12), warhead blast 28+3/lv r, 0.35x (was 36+4, 0.5x), L5 split 1
+                  micro-seeker at 35% (was 2 at 45%). Still the best sustained ranged weapon late.
+PHOTON SCATTERGUN early 2.5 -> ~1.5. Pellets 5/6/7/8/9 (was 6/8/8/10/10), 0.30+0.05/lv,
+                  ricochets keep 60% (was 70%), L5 double-tap at 70%. Shotgun feel intact.
+VOID BLADES       GEOMETRY FIX: enemies inside the orbit are swept across a 1.15 rad arc per
+                  blade (the disc) instead of the 0.42 rad ring band; orbit 46+6/lv (was 58+7).
+                  Went from 0.14/0.05 (early/late idx) to a real early melee weapon; damage
+                  0.34+0.08/lv after the fix so it does not become the new outlier.
+RAILGUN           per-level scaling 2.6+1.15/lv (was 3.2+0.6), 2.0x vs elites/boss (was 1.6),
+                  30% inherent crit, L5 cross-rails 0.8 reach / 2.5x. Still slow and precise.
+ARC COIL + TEMPEST jumps 3/4/5/6/7 (was 3/4/4/5/5), falloff 0.94 (was 0.88), damage 1.2+0.3/lv,
+                  base cooldown 1.6-0.16/lv and the discharge rate now scales with the Fire Rate
+                  stat; Tempest gets +1 jump every 5 levels. Trait text updated.
+GRAVITON MINES + AEGIS  damage untouched (control identity). Pull strength now scales with Area
+                  (pull radius and blast already did), arm 0.55-0.06/lv (was 0.75-0.08).
+                  Aegis' +2% Area/level now widens and strengthens every mine.
+TESLA COIL        range 200+20/lv, zap 1.0+0.2/lv every 0.36-0.04/lv s, targets 1+lv/2, coils
+                  1/1/2/2/3, zapped enemies stutter (static slow), a coil >420 px from the fight
+                  burns out so a fresh one deploys. Persistent network, not a chain gun.
+TORPEDO BAY       launch speed 120 (was 60), accel +80, fuse 30 px, cluster from L4 (2, 3 at L5),
+                  1.4x vs elites/boss. Slow high-impact heavy; now an early/elite specialist.
+PHASE DISRUPTOR   L5 rifts pulse twice (was 3) at 0.35x (was 0.4). Late idx 2.2 -> ~1.4.
+SHIPS             Viper crit 1%/lvl -> 0.8%/lvl (Missiles trimmed). Voidrunner PHASE DRIVE now
+                  also +1.5% blade orbit/reach per level. Tempest CAPACITOR FEEDBACK drives Arc
+                  Coil's discharge rate and adds jumps.

@@ -1,0 +1,12 @@
+PHASE 3.6 — WEAPON IDENTITY, BUILD RULES & GAME FEEDBACK
+
+• Radiation Field, Micro Singularity, and Side Batteries are now full WEAPONS and consume weapon slots.
+• Weapon choices do not use rarity.
+• Systems are filtered to only appear when at least one currently equipped weapon supports them.
+• Enemy body collisions no longer trap/circle the player; contact damage still uses the player hurtbox.
+• Merchant direction arrow + distance added to HUD.
+• Elite vacuum-magnet drops are hardened and their pickups remain collectible by the magnet area.
+• Arc Coil + Graviton Mines now visibly and mechanically activate as GRAVITY STORM.
+• End-of-run damage chart is now visual and ranked, with percentage bars.
+• Upgrade values were raised and differentiated by stat, including stronger Magnet/Area/Damage/Fire Rate rolls.
+• XP curve is slightly easier in mid/late levels.

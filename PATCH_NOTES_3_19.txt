@@ -1,0 +1,45 @@
+Space Survivors — Patch 3.19 cleanup / integrity / endless / performance
+======================================================================
+FILES  Player.gd, UI.gd, GameManager.gd, EnemySpawner.gd, Enemy.gd, EliteRammer.gd, EliteSpitter.gd,
+       Boss.gd, DashShield.gd, weapons/super/Starbreaker.gd, weapons/super/DimensionalReaper.gd,
+       weapons/fx/PhaseWave.gd, weapons/fx/VoidReticle.gd (new), tests/IntegrityTest.tscn (new).
+
+1 DEATH STATE  Player.is_dead is authoritative: set in _die() before anything else, HP forced to 0
+  and re-forced every frame; take_damage / heal / on_kill_heal / add_xp refuse when dead; weapons
+  stop processing; dash + shield cleared; reticles purged. UI on player_died: closes level-up and
+  merchant panels, destroys pending cards, unpauses, forces the HP readout to 0. Guards added to
+  _show_upgrades, the level-up trigger, _on_upgrade_chosen, _on_relic_chosen, _on_cursed_chosen
+  and _on_merchant_buy (all reject input when game over / dead). Reset clears is_dead.
+2 ENDLESS TIMER  endless_time now = elapsed from 0:00 (was elapsed - 10:00, only after 10:00),
+  reset to 0 on every run; the endless achievement threshold moved to 13:00 so it means the same.
+3 EFFECTIVE DAMAGE  record_damage(src, attempted) now only announces the source; Enemy / Elite /
+  Boss take_damage commit min(amount_after_caps, remaining HP) via commit_damage(). Dead targets
+  (the _dead guard) commit nothing. Overkill, the boss 2.5% burst cap and armor are therefore
+  reflected; crits, supers, dash (ship_ability), Orbit Drones (relic) keep their attribution.
+  Verified: 30-HP enemy hit twice for 500 -> chart 30; boss hit for 100000 -> chart 143 (= cap).
+4/5 CHART  Grouped WEAPONS / SUPERWEAPONS / RELICS / SHIP ABILITY, compact K/M/B numbers
+  (2356364 -> 2.36M, 645879 -> 646K, 70642 -> 70.6K), TOTAL + average DPS and per-source DPS.
+  Both results labels now live in a ScrollContainer (210 px), fit_content on, so long lists scroll.
+6 STARBREAKER  Shrapnel origins capped at 6 nearest impacts + 3 fixed rail points, 3 pellets per
+  side per point, one 6-particle spark burst per point: worst case ~54 pellets (was several
+  hundred plus 10 sparks per hit). Rail, damage, recoil, audio untouched.
+7 DASH SHIELD  Two counter-rotating hex-facet layers, wobbling distortion ring, rim sweep, bright
+  0.14 s activation pulse, capped localized impact ripples. Same visibility rule (real i-frames).
+8 OVERCHARGE  When build_levelup_choices() finds nothing to offer, it returns 3 OVERCHARGE cards
+  from 6 small run-only bonuses (+1.5% dmg, +1% fire rate, +2% speed, +2% hull, +2% proj speed,
+  +0.5% crit). Uncapped, outside the distinct-core limit, reset per run, counted for the card text.
+9/10 VOID ARTILLERY  VoidReticle.gd replaces the PhaseRift rings: a purple targeting reticle on
+  the marked enemy, 0.55 s telegraph with an incoming-spike streak, then a Void Spike (small pulse,
+  damage + class-based shove, bosses never move). Ownership: cap 8 active (static counter), one per
+  target (meta), frees itself on strike, target death/removal, weapon level 0 / suppressed, game
+  over, player dead, and a 2 s hard timeout; group void_reticles is in the run purge and cleared in
+  Player._die(). Phase Disruptor places them on every marked enemy (bigger spike at L5); the
+  Dimensional Reaper's rifts are now reticles too.
+TESTS  IntegrityTest: endless live timer, overkill/dead-target/boss-cap accounting, compact
+  formatting, reticle cap 8/12, reticle removed on target death, all gone when the weapon is
+  disabled, overcharge fallback + effect, level-up open then death: HP 0, stays 0 through
+  heal/siphon/pickup/add_xp, panels closed, HUD "0 / 80", reticles purged, upgrade rejected,
+  reset clears state. LifecycleTest A-G and SmokeTest pass.
+CAVEATS  The results-panel scroll region is sized for 1280x720; on very small windows the
+  panel itself may still exceed the viewport (unchanged panel layout). Starbreaker was profiled by
+  object count, not with a frame profiler.

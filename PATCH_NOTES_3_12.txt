@@ -1,0 +1,8 @@
+Phase 3.12 — Manual Aim & Attack Mode
+
+- Added Settings: Attack Mode (Auto Target / Manual Aim).
+- Added Manual Aim Assist (Off / Low / High).
+- Manual aim directs primary fire, Plasma Lance, Railgun, Arc Coil targeting, missile launch direction, and mine placement toward the cursor where applicable.
+- Persistent/area weapons remain centered or autonomous.
+- Added subtle manual-aim direction/reticle indicator.
+- Settings persist across sessions.

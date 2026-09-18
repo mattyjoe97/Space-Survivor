@@ -1,0 +1,13 @@
+PHASE 3.3 — UNIFIED LEVEL-UP EXPERIENCE
+
+- Replaced separate WEAPONS / SYSTEMS / UPGRADES / MODIFIERS tabs during level-up with one unified choice screen.
+- Level-up now presents 4 options at once.
+- While a weapon slot is open, at least one weapon is guaranteed to appear when possible.
+- Choice weighting still favors existing build components and synergy paths.
+- Weapon cards include clearer descriptions and synergy progress.
+- Upgrade cards show current level -> next level without displaying cap percentages.
+- Luck messaging is no longer a prominent line on the card.
+- Hovering an option now shows a large left-side arrow and a stronger card highlight.
+- Tooltips explain what the upgrade does, what the next effect is, and rarity.
+- Level-up panel enlarged so all four options remain readable without tabs or hidden pages.
+- Rerolls now reroll the unified four-card pool.

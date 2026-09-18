@@ -1,0 +1,7 @@
+Phase 3.4.1 — AoE Pulse Cadence
+
+- Shortened Void Blades damage cycle: 0.70s base, scaling to 0.28s minimum.
+- Shortened Ion Burst pulse cycle: 1.25s base, scaling to 0.55s minimum.
+- Shortened Graviton Mines cycle: 1.90s base, scaling to 0.75s minimum.
+- Shortened Solar Flare cycle: 3.20s base, scaling to 1.25s minimum.
+- Kept AoE radius/damage tuning unchanged; the goal is to make the existing coverage feel active and worth taking without simply inflating raw damage.

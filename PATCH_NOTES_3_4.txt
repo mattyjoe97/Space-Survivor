@@ -1,0 +1,10 @@
+SPACE SURVIVORS — PATCH 3.4
+Upgrade Feel & AoE Build Balance
+
+- Level-up cards now have stronger visual hierarchy, larger names, clearer effects, category/rarity labels, and a larger hover arrow.
+- Relic offers are now tracked per run so the same relic will not be offered repeatedly through milestone rerolls.
+- One-time relics remain one-time pickups; owned relics and previously offered relics are excluded from future milestone offers.
+- Removed cap-percentage clutter from the level-up card presentation; level counts remain the primary progress indicator.
+- Increased early AoE coverage: base aura radius, Ion Burst radius, Void Blade orbit reach, and Solar Flare radius are larger.
+- Graviton Mines now create a wider control/pull zone and a clearer outer visual ring while keeping damage moderate.
+- Slow Field interactions now reach farther around the player, giving control builds more breathing room against fast enemies.

@@ -1,0 +1,15 @@
+Space Survivors — Phase 3.13.1
+HUD Glass Panels
+
+- Reimagined the in-run HUD around the Glass Panels direction from the HUD concept board.
+- Added translucent glass-style panels with subtle borders, corner radii, and shadows.
+- Top-left: ship identity, hull, XP, level, luck, scrap.
+- Top-center: wave, sector, elite count, threat, merchant direction.
+- Top-right: score and timer.
+- Bottom-center: weapon bar with individually styled weapon chips.
+- Right-middle: compact core modifier panel.
+- Bottom-left: build summary panel.
+- Bottom-right: mission panel.
+- Kept the HUD gameplay information and manual-aim reticle intact.
+- Adjusted weapon panel anchoring so it stays centered at all resolutions.
+- Dedicated mission footer is anchored to the right side.

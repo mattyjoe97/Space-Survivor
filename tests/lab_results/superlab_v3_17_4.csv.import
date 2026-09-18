@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://6x31sn3vd613"
+
+[deps]
+
+files=["res://tests/lab_results/superlab_v3_17_4.config.translation", "res://tests/lab_results/superlab_v3_17_4.scenario.translation", "res://tests/lab_results/superlab_v3_17_4.seconds.translation", "res://tests/lab_results/superlab_v3_17_4.total.translation", "res://tests/lab_results/superlab_v3_17_4.dps.translation", "res://tests/lab_results/superlab_v3_17_4.kills.translation", "res://tests/lab_results/superlab_v3_17_4.kills.translation", "res://tests/lab_results/superlab_v3_17_4.alive.translation", "res://tests/lab_results/superlab_v3_17_4.dmg.translation", "res://tests/lab_results/superlab_v3_17_4.active.translation", "res://tests/lab_results/superlab_v3_17_4.boss.translation", "res://tests/lab_results/superlab_v3_17_4.boss.translation", "res://tests/lab_results/superlab_v3_17_4.elite.translation", "res://tests/lab_results/superlab_v3_17_4.elite.translation", "res://tests/lab_results/superlab_v3_17_4.by.translation"]
+
+source_file="res://tests/lab_results/superlab_v3_17_4.csv"
+dest_files=["res://tests/lab_results/superlab_v3_17_4.config.translation", "res://tests/lab_results/superlab_v3_17_4.scenario.translation", "res://tests/lab_results/superlab_v3_17_4.seconds.translation", "res://tests/lab_results/superlab_v3_17_4.total.translation", "res://tests/lab_results/superlab_v3_17_4.dps.translation", "res://tests/lab_results/superlab_v3_17_4.kills.translation", "res://tests/lab_results/superlab_v3_17_4.kills.translation", "res://tests/lab_results/superlab_v3_17_4.alive.translation", "res://tests/lab_results/superlab_v3_17_4.dmg.translation", "res://tests/lab_results/superlab_v3_17_4.active.translation", "res://tests/lab_results/superlab_v3_17_4.boss.translation", "res://tests/lab_results/superlab_v3_17_4.boss.translation", "res://tests/lab_results/superlab_v3_17_4.elite.translation", "res://tests/lab_results/superlab_v3_17_4.elite.translation", "res://tests/lab_results/superlab_v3_17_4.by.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

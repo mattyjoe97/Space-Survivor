@@ -1,0 +1,9 @@
+PHASE 3.4.4 - AOE POWER PASS
+
+- Increased sustained DPS for Ion Burst, Graviton Mines and Solar Flare.
+- Void Blades now have a wider hit envelope, more blades, faster rotation and much stronger contact damage.
+- AoE weapons receive a modest 12-18% damage bonus against elite enemies so close-range builds can stay relevant in elite encounters.
+- Increased uptime on all major area weapons without increasing their base radius again.
+- Graviton Mines retain their randomized scatter and control-zone behavior.
+- Visual impact increased slightly for Void Blades, Ion Burst and Solar Flare.
+- Ranged weapons were left unchanged; this pass is specifically intended to bring area/control archetypes up to a competitive damage floor.

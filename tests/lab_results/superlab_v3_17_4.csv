@@ -1,0 +1,113 @@
+super,config,scenario,seconds,total_damage,dps,kills,kills_per_s,alive_avg,dmg_taken,active_uptime,boss_damage,boss_ttk,elite_damage,elite_ttk,by_source
+dimensional_reaper,A,standard,15.0,693,46.2,0,0.00,12.0,408,0.02,0,-1.0,0,-1.0,void_blades:693
+dimensional_reaper,A,dense,15.0,1520,101.4,0,0.00,30.0,408,0.02,0,-1.0,0,-1.0,void_blades:1520
+dimensional_reaper,A,elite,15.0,683,45.6,0,0.00,8.0,312,0.03,0,-1.0,683,-1.0,void_blades:683
+dimensional_reaper,A,boss,15.0,422,28.1,0,0.00,1.0,551,0.03,422,-1.0,0,-1.0,void_blades:421
+dimensional_reaper,B,standard,15.0,152,10.1,0,0.00,12.0,312,0.01,0,-1.0,0,-1.0,phase_disruptor:151
+dimensional_reaper,B,dense,15.0,695,46.3,0,0.00,30.0,432,0.01,0,-1.0,0,-1.0,phase_disruptor:695
+dimensional_reaper,B,elite,15.0,122,8.1,0,0.00,8.0,300,0.00,0,-1.0,122,-1.0,phase_disruptor:122
+dimensional_reaper,B,boss,15.0,287,19.1,0,0.00,1.0,413,0.01,287,-1.0,0,-1.0,phase_disruptor:286
+dimensional_reaper,AB,standard,15.0,1428,95.2,0,0.00,12.0,324,0.03,0,-1.0,0,-1.0,phase_disruptor:151 void_blades:1276
+dimensional_reaper,AB,dense,15.0,2415,161.0,0,0.00,30.0,444,0.03,0,-1.0,0,-1.0,phase_disruptor:709 void_blades:1704
+dimensional_reaper,AB,elite,15.0,758,50.5,0,0.00,8.0,324,0.03,0,-1.0,758,-1.0,phase_disruptor:122 void_blades:635
+dimensional_reaper,AB,boss,15.0,797,53.1,0,0.00,1.0,413,0.04,797,-1.0,0,-1.0,phase_disruptor:286 void_blades:510
+dimensional_reaper,SUPER,standard,15.0,15962,1064.1,17,1.13,12.0,0,0.20,0,-1.0,0,-1.0,dimensional_reaper:15961
+dimensional_reaper,SUPER,dense,15.0,50198,3346.6,106,7.07,20.3,0,0.34,0,-1.0,0,-1.0,dimensional_reaper:50198
+dimensional_reaper,SUPER,elite,15.0,2566,171.1,3,0.20,6.9,204,0.10,0,-1.0,2566,-1.0,dimensional_reaper:2566
+dimensional_reaper,SUPER,boss,15.0,393,26.2,0,0.00,1.0,482,0.02,393,-1.0,0,-1.0,dimensional_reaper:392
+dreadnought_salvo,A,standard,15.0,29660,1977.4,36,2.40,12.2,492,0.06,0,-1.0,0,-1.0,missile_system:29660
+dreadnought_salvo,A,dense,15.0,47302,3153.5,90,6.00,21.5,492,0.09,0,-1.0,0,-1.0,missile_system:47302
+dreadnought_salvo,A,elite,15.0,4015,267.7,7,0.47,4.2,216,0.07,0,-1.0,4015,-1.0,missile_system:4015
+dreadnought_salvo,A,boss,15.0,1982,132.2,0,0.00,1.0,773,0.05,1982,-1.0,0,-1.0,missile_system:1982
+dreadnought_salvo,B,standard,15.0,2340,156.0,0,0.00,11.9,336,0.01,0,-1.0,0,-1.0,torpedo_bay:2340
+dreadnought_salvo,B,dense,15.0,9303,620.2,8,0.53,24.2,408,0.01,0,-1.0,0,-1.0,torpedo_bay:9302
+dreadnought_salvo,B,elite,15.0,1676,111.8,1,0.07,7.4,300,0.01,0,-1.0,1676,-1.0,torpedo_bay:1676
+dreadnought_salvo,B,boss,15.0,1429,95.2,0,0.00,1.0,46,0.02,1429,-1.0,0,-1.0,torpedo_bay:1428
+dreadnought_salvo,AB,standard,15.0,25389,1692.6,28,1.87,11.8,420,0.10,0,-1.0,0,-1.0,torpedo_bay:5081 missile_system:20308
+dreadnought_salvo,AB,dense,15.0,46593,3106.2,90,6.00,20.8,528,0.14,0,-1.0,0,-1.0,missile_system:32929 torpedo_bay:13663
+dreadnought_salvo,AB,elite,15.0,3848,256.6,8,0.53,3.5,192,0.10,0,-1.0,3848,11.0,missile_system:2486 torpedo_bay:1362
+dreadnought_salvo,AB,boss,15.0,3894,259.6,0,0.00,1.0,61,0.07,3894,-1.0,0,-1.0,missile_system:2106 torpedo_bay:1787
+dreadnought_salvo,SUPER,standard,15.0,18385,1225.7,20,1.33,12.9,240,0.07,0,-1.0,0,-1.0,dreadnought_salvo:18385
+dreadnought_salvo,SUPER,dense,15.0,42827,2855.1,72,4.80,21.7,300,0.07,0,-1.0,0,-1.0,dreadnought_salvo:42827
+dreadnought_salvo,SUPER,elite,15.0,3169,211.3,5,0.33,4.8,108,0.04,0,-1.0,3169,-1.0,dreadnought_salvo:3168
+dreadnought_salvo,SUPER,boss,15.0,1646,109.8,0,0.00,1.0,0,0.03,1646,-1.0,0,-1.0,dreadnought_salvo:1646
+frozen_singularity,A,standard,15.0,5167,344.5,0,0.00,12.0,24,0.01,0,-1.0,0,-1.0,graviton_mines:5167
+frozen_singularity,A,dense,15.0,12426,828.4,23,1.53,28.8,12,0.01,0,-1.0,0,-1.0,graviton_mines:12426
+frozen_singularity,A,elite,15.0,2092,139.4,0,0.00,8.0,48,0.01,0,-1.0,2092,-1.0,graviton_mines:2091
+frozen_singularity,A,boss,15.0,246,16.4,0,0.00,1.0,136,0.00,246,-1.0,0,-1.0,graviton_mines:246
+frozen_singularity,B,standard,15.0,3469,231.3,0,0.00,12.0,0,0.03,0,-1.0,0,-1.0,cryo_field:3469
+frozen_singularity,B,dense,15.0,11642,776.1,23,1.53,28.4,0,0.05,0,-1.0,0,-1.0,cryo_field:11641
+frozen_singularity,B,elite,15.0,1812,120.8,0,0.00,8.0,0,0.03,0,-1.0,1812,-1.0,cryo_field:1811
+frozen_singularity,B,boss,15.0,194,12.9,0,0.00,1.0,589,0.03,194,-1.0,0,-1.0,cryo_field:194
+frozen_singularity,AB,standard,15.0,8418,561.2,7,0.47,12.7,0,0.04,0,-1.0,0,-1.0,cryo_field:3835 graviton_mines:4582
+frozen_singularity,AB,dense,15.0,25554,1703.6,53,3.53,25.2,0,0.06,0,-1.0,0,-1.0,cryo_field:11221 graviton_mines:14333
+frozen_singularity,AB,elite,15.0,3144,209.6,6,0.40,6.0,0,0.04,0,-1.0,3144,-1.0,cryo_field:1467 graviton_mines:1676
+frozen_singularity,AB,boss,15.0,526,35.1,0,0.00,1.0,136,0.04,526,-1.0,0,-1.0,cryo_field:218 graviton_mines:307
+frozen_singularity,SUPER,standard,15.0,5408,360.5,4,0.27,11.3,204,0.04,0,-1.0,0,-1.0,frozen_singularity:5407
+frozen_singularity,SUPER,dense,15.0,12951,863.4,22,1.47,25.5,432,0.06,0,-1.0,0,-1.0,frozen_singularity:12950
+frozen_singularity,SUPER,elite,15.0,1844,122.9,4,0.27,7.2,48,0.04,0,-1.0,1844,-1.0,frozen_singularity:1843
+frozen_singularity,SUPER,boss,15.0,283,18.9,0,0.00,1.0,521,0.03,283,-1.0,0,-1.0,frozen_singularity:282
+hellfire_lance,A,standard,15.0,10512,700.8,10,0.67,11.9,468,0.35,0,-1.0,0,-1.0,plasma_lance:10512
+hellfire_lance,A,dense,15.0,18717,1247.8,42,2.80,23.0,504,0.40,0,-1.0,0,-1.0,plasma_lance:18717
+hellfire_lance,A,elite,15.0,3036,202.4,5,0.33,5.8,360,0.17,0,-1.0,3036,-1.0,plasma_lance:3035
+hellfire_lance,A,boss,15.0,1202,80.2,0,0.00,1.0,589,0.12,1202,-1.0,0,-1.0,plasma_lance:1202
+hellfire_lance,B,standard,15.0,4865,324.3,4,0.27,10.9,384,0.31,0,-1.0,0,-1.0,plasma_lance:55 flamethrower:4809
+hellfire_lance,B,dense,15.0,7743,516.2,15,1.00,26.0,492,0.30,0,-1.0,0,-1.0,flamethrower:7742
+hellfire_lance,B,elite,15.0,1799,119.9,2,0.13,7.3,360,0.23,0,-1.0,1799,-1.0,flamethrower:1799
+hellfire_lance,B,boss,15.0,1065,71.0,0,0.00,1.0,696,0.21,1065,-1.0,0,-1.0,flamethrower:1065
+hellfire_lance,AB,standard,15.0,13271,884.8,12,0.80,11.5,444,0.48,0,-1.0,0,-1.0,plasma_lance:8481 flamethrower:4789
+hellfire_lance,AB,dense,15.0,28823,1921.5,60,4.00,21.4,660,0.65,0,-1.0,0,-1.0,flamethrower:9001 plasma_lance:19821
+hellfire_lance,AB,elite,15.0,3347,223.1,7,0.47,4.7,240,0.27,0,-1.0,3347,-1.0,plasma_lance:2374 flamethrower:972
+hellfire_lance,AB,boss,15.0,2274,151.6,0,0.00,1.0,773,0.30,2274,-1.0,0,-1.0,plasma_lance:1202 flamethrower:1071
+hellfire_lance,SUPER,standard,15.0,7961,530.7,9,0.60,11.5,408,0.42,0,-1.0,0,-1.0,plasma_lance:196 hellfire_lance:7764
+hellfire_lance,SUPER,dense,15.0,18831,1255.4,42,2.80,22.5,540,0.57,0,-1.0,0,-1.0,hellfire_lance:18831
+hellfire_lance,SUPER,elite,15.0,2652,176.8,5,0.33,6.9,276,0.25,0,-1.0,2652,-1.0,hellfire_lance:2652
+hellfire_lance,SUPER,boss,15.0,69,4.6,0,0.00,1.0,175,0.01,69,-1.0,0,-1.0,hellfire_lance:68
+nuclear_broadside,A,standard,15.0,4716,314.4,0,0.00,12.0,444,0.13,0,-1.0,0,-1.0,radiation:4716
+nuclear_broadside,A,dense,15.0,11283,752.2,23,1.53,28.1,480,0.17,0,-1.0,0,-1.0,radiation:11282
+nuclear_broadside,A,elite,15.0,1889,126.0,0,0.00,8.0,324,0.14,0,-1.0,1889,-1.0,radiation:1889
+nuclear_broadside,A,boss,15.0,215,14.3,0,0.00,1.0,551,0.06,215,-1.0,0,-1.0,radiation:214
+nuclear_broadside,B,standard,15.0,12991,866.1,12,0.80,13.1,324,0.12,0,-1.0,0,-1.0,side_guns:12990
+nuclear_broadside,B,dense,15.0,26214,1747.6,58,3.87,23.4,480,0.15,0,-1.0,0,-1.0,side_guns:26213
+nuclear_broadside,B,elite,15.0,3138,209.2,6,0.40,5.5,204,0.09,0,-1.0,3138,-1.0,side_guns:3138
+nuclear_broadside,B,boss,15.0,1003,66.9,0,0.00,1.0,16,0.04,1003,-1.0,0,-1.0,side_guns:1003
+nuclear_broadside,AB,standard,15.0,16397,1093.1,20,1.33,12.0,372,0.33,0,-1.0,0,-1.0,side_guns:12862 radiation:3534
+nuclear_broadside,AB,dense,15.0,35701,2380.0,74,4.93,22.1,588,0.37,0,-1.0,0,-1.0,radiation:9384 side_guns:26316
+nuclear_broadside,AB,elite,15.0,3222,214.8,7,0.47,4.4,120,0.16,0,-1.0,3222,-1.0,side_guns:2598 radiation:623
+nuclear_broadside,AB,boss,15.0,1055,70.3,0,0.00,1.0,16,0.05,1055,-1.0,0,-1.0,side_guns:1054
+nuclear_broadside,SUPER,standard,15.0,46455,3097.0,57,3.80,11.4,528,0.56,0,-1.0,0,-1.0,nuclear_broadside:46454
+nuclear_broadside,SUPER,dense,15.0,66557,4437.1,122,8.13,19.9,480,0.48,0,-1.0,0,-1.0,nuclear_broadside:66556
+nuclear_broadside,SUPER,elite,15.0,3423,228.2,6,0.40,4.7,108,0.18,0,-1.0,3423,-1.0,nuclear_broadside:3423
+nuclear_broadside,SUPER,boss,15.0,670,44.7,0,0.00,1.0,38,0.10,670,-1.0,0,-1.0,nuclear_broadside:670
+starbreaker,A,standard,15.0,5090,339.3,2,0.13,11.6,408,0.01,0,-1.0,0,-1.0,railgun:5089
+starbreaker,A,dense,15.0,12899,859.9,22,1.47,28.3,420,0.01,0,-1.0,0,-1.0,railgun:12898
+starbreaker,A,elite,15.0,3183,212.2,4,0.27,7.7,312,0.01,0,-1.0,3183,-1.0,railgun:3183
+starbreaker,A,boss,15.0,853,56.9,0,0.00,1.0,260,0.01,853,-1.0,0,-1.0,railgun:853
+starbreaker,B,standard,15.0,11473,764.8,9,0.60,12.2,396,0.11,0,-1.0,0,-1.0,scattergun:11472
+starbreaker,B,dense,15.0,29112,1940.8,58,3.87,22.9,612,0.23,0,-1.0,0,-1.0,scattergun:29111
+starbreaker,B,elite,15.0,3356,223.7,7,0.47,4.8,264,0.10,0,-1.0,3356,-1.0,scattergun:3356
+starbreaker,B,boss,15.0,3178,211.8,0,0.00,1.0,628,0.08,3178,-1.0,0,-1.0,scattergun:3177
+starbreaker,AB,standard,15.0,17419,1161.3,21,1.40,12.3,432,0.16,0,-1.0,0,-1.0,scattergun:12401 railgun:5017
+starbreaker,AB,dense,15.0,34141,2276.1,74,4.93,20.6,660,0.22,0,-1.0,0,-1.0,scattergun:24219 railgun:9921
+starbreaker,AB,elite,15.0,3961,264.1,8,0.53,3.4,168,0.08,0,-1.0,3961,9.3,scattergun:2624 railgun:1336
+starbreaker,AB,boss,15.0,4291,286.1,0,0.00,1.0,260,0.11,4291,-1.0,0,-1.0,scattergun:3096 railgun:1194
+starbreaker,SUPER,standard,15.0,23074,1538.2,21,1.40,13.6,384,0.01,0,-1.0,0,-1.0,starbreaker:23073
+starbreaker,SUPER,dense,15.0,92021,6134.7,58,3.87,20.3,360,0.01,0,-1.0,0,-1.0,starbreaker:92021
+starbreaker,SUPER,elite,15.0,4533,302.2,6,0.40,4.4,144,0.01,0,-1.0,4533,-1.0,starbreaker:4532
+starbreaker,SUPER,boss,15.0,998,66.5,0,0.00,1.0,175,0.01,998,-1.0,0,-1.0,starbreaker:997
+storm_grid,A,standard,15.0,2374,158.2,0,0.00,12.0,408,0.03,0,-1.0,0,-1.0,arc_coil:2373
+storm_grid,A,dense,15.0,2316,154.4,0,0.00,29.9,408,0.03,0,-1.0,0,-1.0,arc_coil:2316
+storm_grid,A,elite,15.0,1853,123.5,1,0.07,7.9,312,0.02,0,-1.0,1853,-1.0,arc_coil:1853
+storm_grid,A,boss,15.0,458,30.6,0,0.00,1.0,551,0.02,458,-1.0,0,-1.0,arc_coil:458
+storm_grid,B,standard,15.0,2905,193.7,2,0.13,11.8,324,0.07,0,-1.0,0,-1.0,tesla_coil:2905
+storm_grid,B,dense,15.0,3693,246.2,7,0.47,28.0,432,0.11,0,-1.0,0,-1.0,tesla_coil:3693
+storm_grid,B,elite,15.0,3118,207.9,6,0.40,5.4,240,0.10,0,-1.0,3118,-1.0,tesla_coil:3118
+storm_grid,B,boss,15.0,1406,93.7,0,0.00,1.0,589,0.07,1406,-1.0,0,-1.0,tesla_coil:1405
+storm_grid,AB,standard,15.0,4986,332.4,4,0.27,11.1,324,0.10,0,-1.0,0,-1.0,arc_coil:2008 tesla_coil:2977
+storm_grid,AB,dense,15.0,6206,413.7,7,0.47,27.3,456,0.14,0,-1.0,0,-1.0,arc_coil:2556 tesla_coil:3649
+storm_grid,AB,elite,15.0,3295,219.7,7,0.47,4.7,252,0.09,0,-1.0,3295,-1.0,arc_coil:1231 tesla_coil:2063
+storm_grid,AB,boss,15.0,1933,128.9,0,0.00,1.0,628,0.10,1933,-1.0,0,-1.0,arc_coil:509 tesla_coil:1423
+storm_grid,SUPER,standard,15.0,16962,1130.8,21,1.40,12.2,0,0.15,0,-1.0,0,-1.0,storm_grid:16961
+storm_grid,SUPER,dense,15.0,33472,2231.5,74,4.93,20.2,0,0.21,0,-1.0,0,-1.0,storm_grid:33472
+storm_grid,SUPER,elite,15.0,3292,219.4,7,0.47,3.5,0,0.07,0,-1.0,3292,-1.0,storm_grid:3291
+storm_grid,SUPER,boss,15.0,1158,77.2,0,0.00,1.0,666,0.04,1158,-1.0,0,-1.0,storm_grid:1157

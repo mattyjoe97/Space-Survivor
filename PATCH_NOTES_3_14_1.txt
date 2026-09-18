@@ -1,0 +1,13 @@
+Space Survivors — Patch 3.14.1
+==============================
+
+Player death
+- Ship now breaks into multiple polygonal hull/wing/engine fragments that fly outward, spin, and fade.
+- Debris colors follow the selected ship's accent palette.
+- Stronger screen shake + red flash on death.
+- New procedural "ship_destroy" SFX (deep boom + crackle + metallic ping) layered with the explosion sound.
+
+Files
+- scripts/VFX.gd — ship_breakup()
+- scripts/Player.gd — _die() uses ship_breakup + new audio
+- autoload/AudioManager.gd — ship_destroy one-shot

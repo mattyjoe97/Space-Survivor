@@ -1,0 +1,107 @@
+Space Survivors — Patch 3.16.1 "Clean Runs, Reliable Pickups"
+=============================================================
+Bug-fix pass only. No balance, XP/Scrap values, drop rates, weapons, upgrades or
+menus were changed.
+
+ROOT CAUSE 1 — state leaking between runs
+  62 call sites parented run entities (enemies, XP gems, scrap, pickups, projectiles,
+  enemy bullets, Tesla coils, mines, torpedoes, rifts, black holes, damage numbers,
+  every VFX node) directly to get_tree().root. The run ends with
+  change_scene_to_file(), which only replaces the Main scene, so anything under root
+  survived into the menu and the next run. GameManager.reset() also never cleared
+  sector index, event modifiers, cursed upgrades or build tags.
+
+ROOT CAUSE 2 — pickups stranded / magnet not collecting everything
+  Collection depended entirely on Area2D overlap: a gem only started homing when it
+  crossed INTO the XPMagnet area (drops spawned inside, or added while the radius
+  changed, never got an area_entered), and was collected only when its 8px shape
+  touched the player body. The magnet effect (_vacuum_xp) only ever attracted XP
+  gems — Scrap and pickups were ignored — and did nothing at the end of the effect.
+  XPGem._collect could also fire twice (body_entered + distance check) granting XP
+  twice.
+
+CENTRALISED RUN LIFECYCLE
+  - Main registers itself as the run world (GameManager.register_world) and
+    unregisters + purges on exit.
+  - GameManager.spawn(node, deferred) is the single entry point for run-scoped
+    entities: it parents under the run world and tags the node "run_entity".
+    All 62 former root.add_child sites, VFX._root(), WeaponFX._root(),
+    DamageNumber and EnemySpawner now go through it.
+  - GameManager.purge_run_entities() frees everything in the run groups
+    (enemies, elites, boss, xp_gems, scrap_pickups, pickups, tesla_coils,
+    merchants, planets, run_entity, ...). It runs at the top of reset() and again
+    when Main leaves the tree, so no stray survives even if something is spawned
+    between the two.
+  - reset() now also clears sector index, event multipliers/timers, cursed
+    upgrades and build tags. Weapon modules, superweapons, timers, magnet state and
+    status effects live under Player/enemies and die with the scene.
+
+PICKUP RELIABILITY
+  - Player._pickup_sweep() runs every physics tick: any XP/Scrap within
+    xp_magnet_range starts homing, anything within 22px is collected outright.
+    Area2D overlap remains only as a redundant path.
+  - XPGem / ScrapPickup: `collected` guard (no double XP), sticky attraction,
+    boosted speed mode for magnets.
+  - Heal / magnet pickups drift toward the player once inside their own
+    interaction radius (heal 80, magnet 110, elite magnet 170) instead of being
+    silently auto-collected by the XP magnet area.
+
+MAGNET EFFECT
+  - activate_vacuum(duration, elite): per-frame _magnet_sweep pulls every
+    eligible XP/Scrap on the map at boosted speed (new drops included).
+  - At expiry _magnet_final_sweep collects everything within 340px instantly and
+    leaves anything further still homing, so nothing is stranded.
+  - New MagnetFX: spinning field ring around the ship, timer arc, pull lines and
+    travelling motes to every drop in flight; start/finish shockwaves and sound.
+
+ELITE MAGNET PRESENTATION
+  - Magenta/white horseshoe-magnet glyph, pulsing glow, spinning arcs, orbiting
+    sparks, wide interaction ring, hover bob; "MAGNET" label on drop with a
+    shockwave + spark burst + sound; larger interaction radius; collection gives a
+    160px shockwave, spark storm, screen flash and fanfare, and the magnet field
+    turns magenta while an elite magnet is active.
+
+TESTS (tests/LifecycleTest.tscn — headless, uses the real restart flow:
+       UI._on_restart -> MainMenu -> MainMenu._launch)
+  A  3 consecutive runs; each run dirtied with XP, 4 weapons, Dreadnought Salvo,
+     Tesla coil, 25 enemies, 80 drops, an elite magnet and an active magnet, then
+     the player is killed and the game restarted. Run 2 and Run 3 verified:
+     XP 0 / level 1, no gems, coils, stale enemies, projectiles, drops, supers,
+     weapon levels beyond the signature weapon, magnet state, run stats, no
+     run entities under the tree root, WeaponManager clean.
+  B  300 gems + 100 scrap at normal range: none left inside pickup range.
+  C  400 scattered drops, magnet active, player moving in a circle: all collected.
+  D  Elite magnet: bigger radius, drifts in, activates (elite flag), 80 gems all
+     collected.
+  E  80 enemies + 600 drops + magnet while moving: all collected.
+  Suite passes 3/3 consecutive executions. SmokeTest still passes.
+
+3.16.2 follow-up
+----------------
+FIX  Elites (and normal enemies / boss) could die more than once. take_damage()
+     called _die() on every hit while HP <= 0 until the node freed at end of
+     frame, so multi-hit weapons (blades, beams, salvos, shrapnel) killed an
+     elite 2-5 times: multiple magnets, gem sets, scrap awards and elite-kill
+     credits. Added a _dead guard to Enemy, EliteRammer, EliteSpitter and Boss.
+FIX  Magnet did not pull the "larger" drops (heal / magnet pickups): the sweep
+     only covered xp_gems and scrap_pickups. Pickup.gd gained start_attract()
+     with boosted speed; the per-frame magnet sweep, the final sweep and the
+     MagnetFX pull lines now include the pickups group.
+TEST F: two elites each hit 40x in one frame -> exactly 2 elite magnets, kills
+     and scrap counted once; normal enemy hit 30x -> 1 gem.
+TEST G: 12 heals + 3 magnets scattered 300-700px, magnet active -> all collected.
+Suite (A-G) passes 3/3; SmokeTest passes.
+
+3.16.3 pickup presentation
+--------------------------
+Visual-only. No behaviour, values, drop rates, magnet mechanics, HUD or weapons touched.
+- XP gem unchanged (green diamond).
+- SCRAP: metallic salvage shard — jagged steel plate, amber torn edge, rivets,
+  sweeping specular glint, tumbling. No longer a gold diamond next to the XP gem.
+- HEAL: red medical energy pod — dark-red hex capsule, white cross, red halo
+  that beats like a pulse, three orbiting "+" motes.
+- MAGNET: purple horseshoe magnet in a dark disc with sweeping field arcs and
+  motes spiralling inward. Elite magnet keeps its larger magenta/white version.
+- All pickup bodies are now drawn by PickupVFX; the legacy scene polygons are hidden.
+- tests/Shot.tscn: SHOT_PICKUPS=1 lays out XP / Scrap / Heal / Magnet / Elite
+  Magnet in one frame for inspection. Lifecycle suite A-G and SmokeTest pass.
